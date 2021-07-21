@@ -1,0 +1,57 @@
+{% extends 'clients/main.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'clients/status_row.html' %}
+
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5><b><center>Clients</center></b></h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_clients' %}">Create Clients</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+                    <th>Name</th>
+					<th>Id</th>
+				</tr>
+                {% for totals in total %}
+					<tr>
+                        <td>{{totals.client_name}}</td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'update_clients' totals.id %}">Update</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_client' totals.id %}">Delete</a></td>
+
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5><b><center>Project</center></b></h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_projects' %}">Create Projects</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Id</th>
+					<th>Project Name</th>
+				</tr>
+                {% for total in totalp %}
+					<tr>
+                        <td>{{total.id}}</td>
+						<td>{{total.project_name}}</td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'update_projects' total.id %}">Update</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_projects' total.id %}">Delete</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+{% endblock content %}
