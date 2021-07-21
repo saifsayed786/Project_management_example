@@ -9,5 +9,7 @@ urlpatterns = [
     path('create_projects/',views.CreateProjects,name = 'create_projects'),
     path('update_projects/<str:pk>/',views.updateProjects,name = 'update_projects'),
     path('delete_projects/<str:pk>/',views.deleteProject,name = 'delete_projects'),
+    path('update_clients/<str:pk>/',views.updateClient,name = 'update_clients'),
+    path('delete_clients/<str:pk>/',views.deleteProject,name = 'delete_client'),
     path('myview',views.myview,name = 'myview')
 ]

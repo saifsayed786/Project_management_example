@@ -51,7 +51,7 @@ def updateProjects(request, pk):
     form = ProjectForm(instance=project)
 
     if request.method == 'POST':
-        form = ProjectForm(request.POST, instance=order)
+        form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
             return redirect('/')
@@ -66,5 +66,27 @@ def deleteProject(request, pk):
 
 	context = {'item':project}
 	return render(request, 'clients/delete.html', context)
+def updateClient(request, pk):
+
+    client = Client.objects.get(id=pk)
+    form = ClientForm(instance=client)
+
+    if request.method == 'POST':
+        form = ClientForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form':form}
+    return render(request, 'clients/client_form.html', context)
+
+def deleteClient(request, pk):
+	client = Client.objects.get(id=pk)
+	if request.method == "POST":
+		project.delete()
+		return redirect('/')
+
+	context = {'item':client}
+	return render(request, 'clients/delete.html', context)
+
 def myview(request):
     return render(request,'clients/view.html')

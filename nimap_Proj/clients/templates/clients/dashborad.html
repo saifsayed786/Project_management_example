@@ -21,9 +21,9 @@
 				</tr>
                 {% for totals in total %}
 					<tr>
-                    <td> <a href="{% url 'myview' %}" class="btn btn-sm btn-info">View</a></td>
                         <td>{{totals.client_name}}</td>
-						<td>{{totals.id}}</td>
+						<td><a class="btn btn-sm btn-warning" href="{% url 'update_clients' totals.id %}">Update</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_client' totals.id %}">Delete</a></td>
 
 					</tr>
 				{% endfor %}
